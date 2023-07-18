@@ -1,38 +1,97 @@
-.App {
-  text-align: center;
+body {
+  margin: 30px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 17px;
+  line-height: 32px;
+  background-color:rgba(248, 249, 250);
+  color: rgb(33, 37, 41);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  font-weight: 500;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h2 {
+  font-weight: 400;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.pfp {
+  max-width: 300px;
+  min-width: 300px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 20px 10px;
+}
+
+p {
+  padding-bottom: 5px
+}
+
+.about-link {
+  font-size: 14px;
+  color: black;
+  margin: 10px;
+  padding: 7px;
+  display: inline-block;
+  background-color: #f8f9fa;
+  margin: 5px;
+  border-radius: 10px;
+  text-decoration: none;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(33, 37, 41);
+}
+
+.about-link:hover {
+  cursor: pointer;
+  background-color: #e2e2e2ab;
+}
+
+.tiny-logo {
+  height:20px;
+  width: 20px;
+  padding: 2px 4px;
+  margin-bottom: -7px;
+  border-radius: 5px;
+}
+
+.row {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.left {
+  flex: 80%
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.right {
+  flex: 20%
+}
+
+
+
+@media (max-width: 800px) {
+  .about-section {
+    display: flex;
+    flex-direction: column;
   }
-  to {
-    transform: rotate(360deg);
+
+  .row {
+    flex-direction: column-reverse;
+  }
+
+  .pfp {
+    margin: auto;
+    min-width: 300px;
+    min-height: 300px;
+  }
+
+  .about-link {
+    text-align: center;
+  }
+
+  h1 {
+    text-align: center;
   }
 }
