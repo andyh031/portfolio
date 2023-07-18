@@ -18,7 +18,7 @@ function App() {
                 <h2>About Me</h2>
                     <p>
                         I am currently on my way to completing a Bachelor's degree specialized in 
-                        Computer Science and Statistcs at the <a href="https://www.ubc.ca/" target="_blank" rel="noreferrer">University of British Columbia</a>. 
+                        Computer Science and Statistics at the <a href="https://www.ubc.ca/" target="_blank" rel="noreferrer">University of British Columbia</a>. 
                         Previously, I completed my high school degree at <a href="https://school.cbe.ab.ca/school/DrEPScarlett/Pages/default.aspx" target="_blank" rel="noreferrer">Dr. E. P. Scarlett High School</a>,
                         achieving the Governor General's Bronze Academic Medal.
                     </p>
