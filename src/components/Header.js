@@ -13,10 +13,20 @@ import {
 import { EmailIcon } from '@chakra-ui/icons';
 import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 
 export default function Header() {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  const slideControls = useAnimation();
+
+  useEffect(() => {
+    if (isExpanded) {
+    } else {
+    }
+  }, isExpanded);
+
   return (
     <Box
       zIndex="900"
@@ -62,15 +72,50 @@ function ExpandedHeader() {
   return (
     <VStack alignItems="left" mt="2rem">
       <HStack>
-        <Link href="https://github.com/andyh031" isExternal>
-          <IconButton icon={<AiFillGithub />}></IconButton>
-        </Link>
-        <Link href="https://www.linkedin.com/in/andy-hu-a78304280/" isExternal>
-          <IconButton icon={<AiFillLinkedin />}></IconButton>
-        </Link>
-        <Link href="mailto:andy45.hu@gmail.com" isExternal>
-          <IconButton icon={<EmailIcon />}></IconButton>
-        </Link>
+        <Box
+          as={motion.div}
+          w="75px"
+          variants={{
+            hidden: { opacity: 0, x: 200 },
+            visible: { opacity: 1, x: 0 },
+          }}
+          initial="hidden"
+          animate="visible"
+          borderBottom="2px solid black"
+          transition="0.3s ease-out"
+        />
+        <HStack
+          as={motion.div}
+          variants={{
+            hidden: { opacity: 0, x: 75 },
+            visible: { opacity: 1, x: 0 },
+          }}
+          initial="hidden"
+          animate="visible"
+          transition="0.5s ease-in"
+        >
+          <Link href="https://github.com/andyh031" isExternal>
+            <IconButton
+              _hover={{ transform: 'scale(1.05)', bg: 'gray.400' }}
+              icon={<AiFillGithub />}
+            ></IconButton>
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/andy-hu-a78304280/"
+            isExternal
+          >
+            <IconButton
+              _hover={{ transform: 'scale(1.05)', bg: 'gray.400' }}
+              icon={<AiFillLinkedin />}
+            ></IconButton>
+          </Link>
+          <Link href="mailto:andy45.hu@gmail.com" isExternal>
+            <IconButton
+              _hover={{ transform: 'scale(1.05)', bg: 'gray.400' }}
+              icon={<EmailIcon />}
+            ></IconButton>
+          </Link>
+        </HStack>
       </HStack>
       <Link href="/" padding="1rem" fontSize="2em">
         Home

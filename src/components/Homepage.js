@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import pfp from '../images/pfp.png';
 import Skills from './Skills';
 import About from './About';
+import { motion } from 'framer-motion';
 
 export default function Introduction() {
   const qualities = [
@@ -68,7 +69,7 @@ export default function Introduction() {
               <Text color="#0f1b61" fontSize="1.5rem">
                 Welcome to my website!
               </Text>
-              <Text color="#0f1b61" fontSize="1.2rem">
+              <Text minH="2.4rem" color="#0f1b61" fontSize="1.2rem">
                 People describe me as a{' '}
                 <Text
                   display="inline"
@@ -81,9 +82,30 @@ export default function Introduction() {
                 |
               </Text>
               <Box textAlign="right" mt="3rem" w="clamp(15px, 25vw, 130px)">
-                Scroll <ChevronDownIcon />
+                <motion.div
+                  animate={{
+                    y: [-10, 0, -10],
+                    opacity: [1, 0, 1],
+                    transition: {
+                      delay: 3,
+                      duration: 2,
+                      repeat: Infinity,
+                    },
+                  }}
+                >
+                  Scroll <ChevronDownIcon />
+                </motion.div>
               </Box>
               <Box
+                as={motion.div}
+                variants={{
+                  hidden: { opacity: 0, y: 200 },
+                  visible: { opacity: 1, y: 0 },
+                }}
+                initial="hidden"
+                animate="visible"
+                transition="1s ease-out"
+                transitionDelay="1s"
                 alignSelf="flex-start"
                 w="clamp(10px, 20vw, 100px)"
                 h="clamp(100px, 50vh, 600px)"
