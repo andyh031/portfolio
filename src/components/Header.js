@@ -3,24 +3,36 @@ import {
   Box,
   Button,
   Text,
-  Stack,
-  Menu,
-  MenuButton,
+  VStack,
   HStack,
+  Menu,
+  Image,
+  IconButton,
+  Link,
 } from '@chakra-ui/react';
+import { EmailIcon } from '@chakra-ui/icons';
+import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 export default function Header() {
   const [isExpanded, setIsExpanded] = useState(false);
-
   return (
-    <Box p="3rem">
+    <Box
+      zIndex="900"
+      position="sticky"
+      top="1rem"
+      margin="auto"
+      w={{ base: '90vw', md: '70vw', xl: '1200px' }}
+      paddingInline="4rem"
+      paddingTop="3rem"
+    >
       <Flex justifyContent="space-between">
         <Menu>
-          <MenuButton
+          <Button
             _hover={{
               letterSpacing: '0.3rem',
+              bgColor: 'gray.400',
             }}
             letterSpacing="0.1em"
             fontSize="xl"
@@ -38,9 +50,8 @@ export default function Header() {
                 <ChevronDownIcon />
               </HStack>
             )}
-          </MenuButton>
+          </Button>
         </Menu>
-        <Button>Contact Me</Button>
       </Flex>
       {isExpanded && <ExpandedHeader />}
     </Box>
@@ -49,19 +60,27 @@ export default function Header() {
 
 function ExpandedHeader() {
   return (
-    <Stack mt="2rem">
-      <Text padding="1rem" fontSize="2em">
+    <VStack alignItems="left" mt="2rem">
+      <HStack>
+        <Link href="https://github.com/andyh031" isExternal>
+          <IconButton icon={<AiFillGithub />}></IconButton>
+        </Link>
+        <Link href="https://www.linkedin.com/in/andy-hu-a78304280/" isExternal>
+          <IconButton icon={<AiFillLinkedin />}></IconButton>
+        </Link>
+        <Link href="mailto:andy45.hu@gmail.com" isExternal>
+          <IconButton icon={<EmailIcon />}></IconButton>
+        </Link>
+      </HStack>
+      <Link href="/" padding="1rem" fontSize="2em">
         Home
-      </Text>
-      <Text padding="1rem" fontSize="2em">
-        About
-      </Text>
-      <Text padding="1rem" fontSize="2em">
+      </Link>
+      <Link href="/projects" padding="1rem" fontSize="2em">
         Projects
-      </Text>
-      <Text padding="1rem" fontSize="2em">
+      </Link>
+      <Link href="/experience" padding="1rem" fontSize="2em">
         Experience
-      </Text>
-    </Stack>
+      </Link>
+    </VStack>
   );
 }
