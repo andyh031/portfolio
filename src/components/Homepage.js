@@ -67,10 +67,10 @@ export default function Introduction() {
                 Hey, I'm Andy!
               </Text>
               <Text color="#0f1b61" fontSize="1.5rem">
-                Welcome to my website!
+                Welcome to my world!
               </Text>
               <Text minH="2.4rem" color="#0f1b61" fontSize="1.2rem">
-                People describe me as a{' '}
+                Others see me as a{' '}
                 <Text
                   display="inline"
                   color="#0f1b61"
@@ -114,15 +114,25 @@ export default function Introduction() {
                 borderRightWidth="1px"
               ></Box>
             </VStack>
-            <Image
-              position="sticky"
-              top="15rem"
-              maxW="clamp(300px,30vw,400px)"
-              h="clamp(300px, 30vw, 400px)"
-              borderRadius="50%"
-              objectFit="cover"
-              src={pfp}
-            />
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, x: 50, y: 50 },
+                show: { opacity: 1, x: 0, y: 0 },
+              }}
+              initial="hidden"
+              animate="show"
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <Image
+                position="sticky"
+                top="15rem"
+                maxW="clamp(300px,30vw,400px)"
+                h="clamp(300px, 30vw, 400px)"
+                borderRadius="50%"
+                objectFit="cover"
+                src={pfp}
+              />
+            </motion.div>
           </Flex>
         </Box>
         <About />

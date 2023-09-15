@@ -1,8 +1,15 @@
 import { Box, Heading, Text } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 
 export default function About() {
   return (
-    <Box minH="80vh" marginBlock="3rem">
+    <Box
+      as={motion.div}
+      whileInView={{ color: 'black' }}
+      animate={{ y: [50, 0], duration: '2s', opacity: [0, 1] }}
+      minH="70vh"
+      marginBlock="3rem"
+    >
       <Heading>About</Heading>
 
       <Text mt="1rem" fontSize="1.2rem">

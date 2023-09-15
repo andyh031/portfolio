@@ -18,15 +18,6 @@ import { motion, useAnimation } from 'framer-motion';
 
 export default function Header() {
   const [isExpanded, setIsExpanded] = useState(false);
-
-  const slideControls = useAnimation();
-
-  useEffect(() => {
-    if (isExpanded) {
-    } else {
-    }
-  }, isExpanded);
-
   return (
     <Box
       zIndex="900"
@@ -47,7 +38,9 @@ export default function Header() {
             letterSpacing="0.1em"
             fontSize="xl"
             fontWeight="semibold"
-            onClick={() => setIsExpanded((prev) => !prev)}
+            onClick={() => {
+              setIsExpanded((prev) => !prev);
+            }}
           >
             {isExpanded ? (
               <HStack>
@@ -69,6 +62,20 @@ export default function Header() {
 }
 
 function ExpandedHeader() {
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.5,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1 },
+  };
   return (
     <VStack alignItems="left" mt="2rem">
       <HStack>
@@ -84,38 +91,35 @@ function ExpandedHeader() {
           borderBottom="2px solid black"
           transition="0.3s ease-out"
         />
-        <HStack
-          as={motion.div}
-          variants={{
-            hidden: { opacity: 0, x: 75 },
-            visible: { opacity: 1, x: 0 },
-          }}
-          initial="hidden"
-          animate="visible"
-          transition="0.5s ease-in"
-        >
-          <Link href="https://github.com/andyh031" isExternal>
-            <IconButton
-              _hover={{ transform: 'scale(1.05)', bg: 'gray.400' }}
-              icon={<AiFillGithub />}
-            ></IconButton>
-          </Link>
-          <Link
-            href="https://www.linkedin.com/in/andy-hu-a78304280/"
-            isExternal
-          >
-            <IconButton
-              _hover={{ transform: 'scale(1.05)', bg: 'gray.400' }}
-              icon={<AiFillLinkedin />}
-            ></IconButton>
-          </Link>
-          <Link href="mailto:andy45.hu@gmail.com" isExternal>
-            <IconButton
-              _hover={{ transform: 'scale(1.05)', bg: 'gray.400' }}
-              icon={<EmailIcon />}
-            ></IconButton>
-          </Link>
-        </HStack>
+        <motion.ul variants={container} initial="hidden" animate="show">
+          <motion.li variants={item}>
+            <Link href="https://github.com/andyh031" isExternal>
+              <IconButton
+                _hover={{ transform: 'scale(1.05)', bg: 'gray.400' }}
+                icon={<AiFillGithub />}
+              ></IconButton>
+            </Link>
+          </motion.li>
+          <motion.li variants={item}>
+            <Link
+              href="https://www.linkedin.com/in/andy-hu-a78304280/"
+              isExternal
+            >
+              <IconButton
+                _hover={{ transform: 'scale(1.05)', bg: 'gray.400' }}
+                icon={<AiFillLinkedin />}
+              ></IconButton>
+            </Link>
+          </motion.li>
+          <motion.li variants={item}>
+            <Link href="mailto:andy45.hu@gmail.com" isExternal>
+              <IconButton
+                _hover={{ transform: 'scale(1.05)', bg: 'gray.400' }}
+                icon={<EmailIcon />}
+              ></IconButton>
+            </Link>
+          </motion.li>
+        </motion.ul>
       </HStack>
       <Link href="/" padding="1rem" fontSize="2em">
         Home

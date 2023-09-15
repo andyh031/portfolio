@@ -14,6 +14,7 @@ import subletterImage from '../images/subletter.png';
 import sorterImage from '../images/sorter.PNG';
 import gradeairImage from '../images/gradeair.PNG';
 import { motion } from 'framer-motion';
+import butterflies from '../images/butterflies.jpeg';
 
 export default function Projects() {
   const subletter = {
@@ -54,46 +55,67 @@ export default function Projects() {
         marginTop="6rem"
       >
         <Box minH="90vh">
-          <VStack gap="1.5rem" alignItems="flex-start">
-            <Text fontSize="4rem" fontWeight="bold">
-              Projects
-            </Text>
-            <Text color="#0f1b61" fontSize="1.5rem">
-              An expression of creativity and innovation.
-            </Text>
-            <Box textAlign="right" mt="3rem" w="clamp(15px, 25vw, 130px)">
-              <motion.div
-                animate={{
-                  y: [-10, 0, -10],
-                  opacity: [1, 0, 1],
-                  transition: {
-                    delay: 3,
-                    duration: 2,
-                    repeat: Infinity,
-                  },
+          <Flex gap="3rem" justifyContent="space-between">
+            <VStack gap="1.5rem" alignItems="flex-start">
+              <Text fontSize="4rem" fontWeight="bold">
+                Projects
+              </Text>
+              <Text color="#0f1b61" fontSize="1.5rem">
+                An expression of creativity and innovation.
+              </Text>
+              <Box textAlign="right" mt="3rem" w="clamp(15px, 25vw, 160px)">
+                <motion.div
+                  animate={{
+                    y: [-10, 0, -10],
+                    opacity: [1, 0, 1],
+                    transition: {
+                      delay: 3,
+                      duration: 2,
+                      repeat: Infinity,
+                    },
+                  }}
+                >
+                  Scroll <ChevronDownIcon />
+                </motion.div>
+              </Box>
+              <Box
+                as={motion.div}
+                variants={{
+                  hidden: { opacity: 0, y: 200 },
+                  visible: { opacity: 1, y: 0 },
                 }}
-              >
-                Scroll <ChevronDownIcon />
-              </motion.div>
-            </Box>
-            <Box
-              as={motion.div}
+                initial="hidden"
+                animate="visible"
+                transition="1s ease-out"
+                transitionDelay="1s"
+                alignSelf="flex-start"
+                w="clamp(15px, 25vw, 130px)"
+                h="clamp(100px, 40vh, 500px)"
+                borderStyle="solid"
+                borderColor="gray.600"
+                borderRightWidth="1px"
+              ></Box>
+            </VStack>
+            <motion.div
               variants={{
-                hidden: { opacity: 0, y: 200 },
-                visible: { opacity: 1, y: 0 },
+                hidden: { opacity: 0, x: 50, y: 50 },
+                show: { opacity: 1, x: 0, y: 0 },
               }}
               initial="hidden"
-              animate="visible"
-              transition="1s ease-out"
-              transitionDelay="1s"
-              alignSelf="flex-start"
-              w="clamp(15px, 25vw, 130px)"
-              h="clamp(100px, 50vh, 600px)"
-              borderStyle="solid"
-              borderColor="gray.600"
-              borderRightWidth="1px"
-            ></Box>
-          </VStack>
+              animate="show"
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <Image
+                position="sticky"
+                top="15rem"
+                maxW="clamp(300px,30vw,400px)"
+                h="clamp(300px, 30vw, 400px)"
+                borderRadius="50%"
+                objectFit="cover"
+                src={butterflies}
+              />
+            </motion.div>
+          </Flex>
         </Box>
         <Box>
           {projects.map((project) => (
@@ -112,7 +134,7 @@ function Project({ title, image, description, link, technologies }) {
         <Image
           boxShadow="lg"
           width="clamp(250px, 20vw, 400px)"
-          height="clamp(250px, 20vw, 40000px)"
+          height="clamp(250px, 20vw, 400px)"
           borderRadius="50%"
           objectFit="cover"
           src={image}
