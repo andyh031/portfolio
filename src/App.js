@@ -5,19 +5,31 @@ import Experience from './components/Experience';
 import { Route, Routes } from 'react-router-dom';
 import { ChakraProvider, Box } from '@chakra-ui/react';
 import Header from './components/Header';
+import { useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 
 function App() {
+  const [bkgColor, setBkgColor] = useState('white');
+  const [showDocText, setShowDocText] = useState(true);
+
   return (
     <ChakraProvider>
       <Box
+        as={motion.div}
+        variants={{
+          initial: { height: 0, opacity: 0 },
+          animate: { height: '100%', opacity: 1 },
+        }}
+        initial="initial"
+        animate="animate"
+        transition="1s ease-in-out"
         position="fixed"
         top="50%"
         left="50%"
         transform="translate(-50%, -50%)"
         zIndex="-1"
         w={{ base: '100vw', md: '80vw', xl: '1200px' }}
-        h="100%"
-        bgColor="#f4f9fc"
+        bgColor={bkgColor}
       />
       <Box
         pointerEvents="none"
@@ -29,12 +41,24 @@ function App() {
         zIndex="1000"
         borderWidth="1.5rem"
       ></Box>
-      <Header />
-      <Routes>
-        <Route path="/" exact element={<Homepage />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/experience" element={<Experience />} />
-      </Routes>
+      <Header setShowDocText={setShowDocText} />
+      {showDocText && (
+        <Routes>
+          <Route
+            path="/"
+            exact
+            element={<Homepage setBkgColor={setBkgColor} />}
+          />
+          <Route
+            path="/projects"
+            element={<Projects setBkgColor={setBkgColor} />}
+          />
+          <Route
+            path="/experience"
+            element={<Experience setBkgColor={setBkgColor} />}
+          />
+        </Routes>
+      )}
     </ChakraProvider>
   );
 }

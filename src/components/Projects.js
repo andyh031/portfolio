@@ -13,18 +13,31 @@ import { ChevronDownIcon } from '@chakra-ui/icons';
 import subletterImage from '../images/subletter.png';
 import sorterImage from '../images/sorter.PNG';
 import gradeairImage from '../images/gradeair.PNG';
-import { motion } from 'framer-motion';
+import heartImage from '../images/heartImage.PNG';
 import butterflies from '../images/butterflies.jpeg';
+import { motion, useAnimation, useInView } from 'framer-motion';
+// import { useInView } from 'react-intersection-observer';
+import { useRef, useEffect } from 'react';
 
-export default function Projects() {
+export default function Projects({ setBkgColor }) {
+  setBkgColor('#fff7f7');
   const subletter = {
     title: 'Subletter',
     image: subletterImage,
     description:
-      'Subletter was my first project making a full-stack social media application, as well as my first exposure to SQL and relational databases. It was incredibly satisfying seeing how the front and backend are both intertwined and separated. To support user CRUD operations, my team and I used Express.js to implement a RESTful API. For the frontend, we used React.js enhanced by the Chakra UI CSS framework. To ensure safety in the database, we encypted sensitive user information with bcrypt while storing it into the database, and used JSON Web Tokens and Cookies to preserve the user state while navigating through the application.',
+      'Subletter is a full-stack social media application utilizing React.js enhanced by the Chakra UI CSS framework. To support user CRUD operations, my team and I used Express.js to implement a RESTful API. To ensure safety in the database, we encypted sensitive user information with bcrypt while storing it into the database, and used JSON Web Tokens and Cookies to preserve the user state',
     link: 'https://github.com/andyh031/subletter',
     technologies:
       'JavaScript, MySQL, React.js, Express.js, Node.js, Chakra UI CSS',
+  };
+
+  const heart = {
+    title: 'Heart Disease Classification',
+    image: heartImage,
+    description:
+      'This was my first time diving into a machine learning, where my team and I deployed a heart disease classification model using a K-Nearest Neighbours algorithm. In this project, I learned about the importance of Exploratory Data Analysis, tradeoffs to model complexity, model optimization through cross-validation, and I overall had a really fun time!',
+    link: 'https://github.com/andyh031/heart-disease-classification',
+    technologies: 'R, Jupyter Notebooks',
   };
 
   const sorter = {
@@ -45,7 +58,8 @@ export default function Projects() {
     technologies: 'Java, JUnit, Java Swing',
   };
 
-  const projects = [subletter, sorter, gradeAir];
+  const projects = [subletter, sorter, heart, gradeAir];
+
   return (
     <>
       <Box
@@ -117,7 +131,7 @@ export default function Projects() {
             </motion.div>
           </Flex>
         </Box>
-        <Box>
+        <Box marginTop="100px">
           {projects.map((project) => (
             <Project {...project} />
           ))}
@@ -128,12 +142,49 @@ export default function Projects() {
 }
 
 function Project({ title, image, description, link, technologies }) {
+  const ref = useRef(null);
+  const boxControls = useAnimation();
+  const isInView = useInView(ref, { once: true, threshold: 0.4 });
+
+  useEffect(() => {
+    if (isInView) {
+      boxControls.start({
+        y: 0,
+        opacity: 1,
+        transition: {
+          type: 'spring',
+          bounce: 0.5,
+          duration: 1,
+        },
+      });
+    } else {
+      boxControls.start({
+        y: 30,
+        opacity: 0,
+      });
+    }
+  }, [isInView]);
   return (
-    <Box p="5rem" borderTop="solid 1px" borderTopColor="gray.300">
-      <Flex gap="5rem">
+    <Box
+      ref={ref}
+      as={motion.div}
+      animate={boxControls}
+      p="5rem"
+      borderTop="solid 1px"
+      borderTopColor="gray.300"
+    >
+      <Flex
+        gap="5rem"
+        flexDirection={{
+          base: 'column-reverse',
+          md: 'column-reverse',
+          lg: 'row',
+        }}
+        alignItems="center"
+      >
         <Image
           boxShadow="lg"
-          width="clamp(250px, 20vw, 400px)"
+          maxW="clamp(250px, 20vw, 400px)"
           height="clamp(250px, 20vw, 400px)"
           borderRadius="50%"
           objectFit="cover"

@@ -1,12 +1,13 @@
 import { Box, Flex, Text, VStack, Image, Heading } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import pfp from '../images/pfp.png';
 import Skills from './Skills';
 import About from './About';
-import { motion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 
-export default function Introduction() {
+export default function Homepage({ setBkgColor }) {
+  setBkgColor('#f4f9fc');
   const qualities = [
     'Web Developer',
     'Software Engineer',

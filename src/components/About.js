@@ -1,14 +1,34 @@
 import { Box, Heading, Text } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
+import {
+  animationControls,
+  motion,
+  useAnimation,
+  useInView,
+} from 'framer-motion';
+import { useRef, useEffect } from 'react';
 
 export default function About() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, threshold: 0.2 });
+  const animation = useAnimation();
+  useEffect(() => {
+    if (isInView) {
+      animation.start('visible');
+    }
+  }, [isInView]);
   return (
     <Box
+      ref={ref}
       as={motion.div}
-      whileInView={{ color: 'black' }}
-      animate={{ y: [50, 0], duration: '2s', opacity: [0, 1] }}
-      minH="70vh"
-      marginBlock="3rem"
+      variants={{
+        hidden: { y: 50, opacity: 0 },
+        visible: { y: 0, opacity: 1 },
+      }}
+      initial="hidden"
+      animate={animation}
+      transition="400ms ease"
+      height="clamp(fit-content, 70vh, 1000px)"
+      marginBlock="50px"
     >
       <Heading>About</Heading>
 

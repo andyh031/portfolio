@@ -16,8 +16,12 @@ import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
 import { useContext, useEffect, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 
-export default function Header() {
+export default function Header({ setShowDocText }) {
   const [isExpanded, setIsExpanded] = useState(false);
+  useEffect(() => {
+    isExpanded ? setShowDocText(false) : setShowDocText(true);
+  }, [isExpanded]);
+
   return (
     <Box
       zIndex="900"
@@ -67,7 +71,7 @@ function ExpandedHeader() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.5,
+        staggerChildren: 0.3,
       },
     },
   };
@@ -76,8 +80,9 @@ function ExpandedHeader() {
     hidden: { opacity: 0 },
     show: { opacity: 1 },
   };
+
   return (
-    <VStack alignItems="left" mt="2rem">
+    <VStack alignItems="left">
       <HStack>
         <Box
           as={motion.div}
@@ -92,7 +97,7 @@ function ExpandedHeader() {
           transition="0.3s ease-out"
         />
         <motion.ul variants={container} initial="hidden" animate="show">
-          <motion.li variants={item}>
+          <motion.li className="left" variants={item}>
             <Link href="https://github.com/andyh031" isExternal>
               <IconButton
                 _hover={{ transform: 'scale(1.05)', bg: 'gray.400' }}
@@ -100,7 +105,7 @@ function ExpandedHeader() {
               ></IconButton>
             </Link>
           </motion.li>
-          <motion.li variants={item}>
+          <motion.li className="left" variants={item}>
             <Link
               href="https://www.linkedin.com/in/andy-hu-a78304280/"
               isExternal
@@ -111,7 +116,7 @@ function ExpandedHeader() {
               ></IconButton>
             </Link>
           </motion.li>
-          <motion.li variants={item}>
+          <motion.li className="left" variants={item}>
             <Link href="mailto:andy45.hu@gmail.com" isExternal>
               <IconButton
                 _hover={{ transform: 'scale(1.05)', bg: 'gray.400' }}
@@ -121,14 +126,47 @@ function ExpandedHeader() {
           </motion.li>
         </motion.ul>
       </HStack>
-      <Link href="/" padding="1rem" fontSize="2em">
-        Home
+      <Link href="/" fontSize="3em">
+        <motion.div
+          className="link"
+          variants={{
+            hidden: { opacity: 0, x: -50 },
+            show: { opacity: 1, x: 0 },
+          }}
+          initial="hidden"
+          animate="show"
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          Home
+        </motion.div>
       </Link>
-      <Link href="/projects" padding="1rem" fontSize="2em">
-        Projects
+      <Link href="/projects" fontSize="3em">
+        <motion.div
+          className="link"
+          variants={{
+            hidden: { opacity: 0, x: -50 },
+            show: { opacity: 1, x: 0 },
+          }}
+          initial="hidden"
+          animate="show"
+          transition={{ duration: 0.6, delay: 1 }}
+        >
+          Projects
+        </motion.div>
       </Link>
-      <Link href="/experience" padding="1rem" fontSize="2em">
-        Experience
+      <Link href="/experience" fontSize="3em">
+        <motion.div
+          className="link"
+          variants={{
+            hidden: { opacity: 0, x: -50 },
+            show: { opacity: 1, x: 0 },
+          }}
+          initial="hidden"
+          animate="show"
+          transition={{ duration: 0.6, delay: 1.2 }}
+        >
+          Experience
+        </motion.div>
       </Link>
     </VStack>
   );

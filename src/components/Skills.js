@@ -5,6 +5,8 @@ import {
   CircularProgress,
   Text,
 } from '@chakra-ui/react';
+import { useRef, useEffect } from 'react';
+import { motion, useInView, useAnimation } from 'framer-motion';
 
 export default function Skills() {
   const skills = [
@@ -19,6 +21,15 @@ export default function Skills() {
     ['TypeScript', '60'],
   ];
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, threshold: 0.2 });
+  const animation = useAnimation();
+  useEffect(() => {
+    if (isInView) {
+      animation.start('visible');
+    }
+  }, [isInView]);
+
   return (
     <>
       <Heading marginBottom="1rem">Technical Skills</Heading>
@@ -31,7 +42,20 @@ export default function Skills() {
         {skills.map((skill) => {
           return (
             <>
-              <VStack>
+              <VStack
+                as={motion.div}
+                variants={{
+                  hidden: {
+                    y: 50,
+                    rotateX: 180,
+                  },
+                  visible: { y: 0, rotateX: 0 },
+                }}
+                initial="hidden"
+                animate={animation}
+                transition="500ms"
+                ref={ref}
+              >
                 <Text>{skill[0]}</Text>
                 <CircularProgress value={skill[1]} />
               </VStack>
