@@ -1,10 +1,5 @@
 import { Box, Heading, Text } from '@chakra-ui/react';
-import {
-  animationControls,
-  motion,
-  useAnimation,
-  useInView,
-} from 'framer-motion';
+import { motion, useAnimation, useInView } from 'framer-motion';
 import { useRef, useEffect } from 'react';
 
 export default function About() {

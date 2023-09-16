@@ -74,17 +74,17 @@ export default function Projects({ setBkgColor }) {
             alignItems={{ sm: 'center', md: 'stretch' }}
           >
             <VStack gap="1.5rem" alignItems="flex-start">
-              <Text fontSize="4rem" fontWeight="bold">
+              <Text fontSize={{ sm: '3rem', md: '4rem' }} fontWeight="bold">
                 Projects
               </Text>
-              <Text color="#0f1b61" fontSize="1.5rem">
+              <Text color="#0f1b61" fontSize={{ sm: '1.3rem', md: '1.5rem' }}>
                 An expression of creativity and innovation.
               </Text>
               <Box
                 color="gray.400"
                 textAlign="right"
                 mt="3rem"
-                w="clamp(15px, 25vw, 160px)"
+                w="clamp(15px, 25vw, 130px)"
               >
                 <motion.div
                   animate={{
@@ -111,8 +111,8 @@ export default function Projects({ setBkgColor }) {
                 transition="1s ease-out"
                 transitionDelay="1s"
                 alignSelf="flex-start"
-                w="clamp(15px, 25vw, 130px)"
-                h="clamp(100px, 40vh, 500px)"
+                w="clamp(10px, 20vw, 100px)"
+                h="clamp(100px, 50vh, 600px)"
                 borderStyle="solid"
                 borderColor="gray.300"
                 borderRightWidth="1px"

@@ -7,13 +7,24 @@ import { ChakraProvider, Box } from '@chakra-ui/react';
 import Header from './components/Header';
 import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { extendTheme } from '@chakra-ui/react';
 
 function App() {
   const [bkgColor, setBkgColor] = useState('white');
   const [showDocText, setShowDocText] = useState(true);
+  const breakpoints = {
+    base: '0px',
+    sm: '320px',
+    md: '875px',
+    lg: '960px',
+    xl: '1200px',
+    '2xl': '1536px',
+  };
+
+  const theme = extendTheme({ breakpoints });
 
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Box
         as={motion.div}
         variants={{
