@@ -4,7 +4,6 @@ import {
   VStack,
   Flex,
   Heading,
-  Button,
   Image,
   Link,
 } from '@chakra-ui/react';
@@ -16,7 +15,6 @@ import gradeairImage from '../images/gradeair.PNG';
 import heartImage from '../images/heartImage.PNG';
 import butterflies from '../images/butterflies.jpeg';
 import { motion, useAnimation, useInView } from 'framer-motion';
-// import { useInView } from 'react-intersection-observer';
 import { useRef, useEffect } from 'react';
 
 export default function Projects({ setBkgColor }) {
@@ -68,8 +66,13 @@ export default function Projects({ setBkgColor }) {
         width="clamp(500px, 70vw, 1000px)"
         marginTop="6rem"
       >
-        <Box minH="90vh">
-          <Flex gap="3rem" justifyContent="space-between">
+        <Box minH="70vh" marginInline="3rem">
+          <Flex
+            gap="3rem"
+            justifyContent="space-between"
+            flexDirection={{ sm: 'column-reverse', md: 'row' }}
+            alignItems={{ sm: 'center', md: 'stretch' }}
+          >
             <VStack gap="1.5rem" alignItems="flex-start">
               <Text fontSize="4rem" fontWeight="bold">
                 Projects
@@ -77,7 +80,12 @@ export default function Projects({ setBkgColor }) {
               <Text color="#0f1b61" fontSize="1.5rem">
                 An expression of creativity and innovation.
               </Text>
-              <Box textAlign="right" mt="3rem" w="clamp(15px, 25vw, 160px)">
+              <Box
+                color="gray.400"
+                textAlign="right"
+                mt="3rem"
+                w="clamp(15px, 25vw, 160px)"
+              >
                 <motion.div
                   animate={{
                     y: [-10, 0, -10],
@@ -106,7 +114,7 @@ export default function Projects({ setBkgColor }) {
                 w="clamp(15px, 25vw, 130px)"
                 h="clamp(100px, 40vh, 500px)"
                 borderStyle="solid"
-                borderColor="gray.600"
+                borderColor="gray.300"
                 borderRightWidth="1px"
               ></Box>
             </VStack>
@@ -120,6 +128,7 @@ export default function Projects({ setBkgColor }) {
               transition={{ duration: 0.6, delay: 0.5 }}
             >
               <Image
+                boxShadow="xl"
                 position="sticky"
                 top="15rem"
                 maxW="clamp(300px,30vw,400px)"

@@ -6,15 +6,14 @@ import {
   VStack,
   HStack,
   Menu,
-  Image,
   IconButton,
   Link,
 } from '@chakra-ui/react';
 import { EmailIcon } from '@chakra-ui/icons';
 import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons';
-import { useContext, useEffect, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Header({ setShowDocText }) {
   const [isExpanded, setIsExpanded] = useState(false);

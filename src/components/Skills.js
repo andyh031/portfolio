@@ -4,6 +4,7 @@ import {
   VStack,
   CircularProgress,
   Text,
+  Box,
 } from '@chakra-ui/react';
 import { useRef, useEffect } from 'react';
 import { motion, useInView, useAnimation } from 'framer-motion';
@@ -31,7 +32,7 @@ export default function Skills() {
   }, [isInView]);
 
   return (
-    <>
+    <Box marginInline="3rem">
       <Heading marginBottom="1rem">Technical Skills</Heading>
       <SimpleGrid
         margin="auto"
@@ -63,6 +64,6 @@ export default function Skills() {
           );
         })}
       </SimpleGrid>
-    </>
+    </Box>
   );
 }

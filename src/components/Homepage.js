@@ -1,10 +1,10 @@
-import { Box, Flex, Text, VStack, Image, Heading } from '@chakra-ui/react';
+import { Box, Flex, Text, VStack, Image } from '@chakra-ui/react';
 import { ChevronDownIcon } from '@chakra-ui/icons';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import pfp from '../images/pfp.png';
 import Skills from './Skills';
 import About from './About';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export default function Homepage({ setBkgColor }) {
   setBkgColor('#f4f9fc');
@@ -61,16 +61,25 @@ export default function Homepage({ setBkgColor }) {
         width="clamp(500px, 70vw, 1000px)"
         marginTop="6rem"
       >
-        <Box minH="90vh">
-          <Flex gap="3rem" justifyContent="space-between">
+        <Box minH="90vh" marginInline="3rem">
+          <Flex
+            gap="3rem"
+            justifyContent="space-between"
+            flexDirection={{ sm: 'column-reverse', md: 'row' }}
+            alignItems={{ sm: 'center', md: 'stretch' }}
+          >
             <VStack gap="1.5rem" alignItems="flex-start">
-              <Text fontSize="4rem" fontWeight="bold">
+              <Text fontSize={{ sm: '3rem', md: '4rem' }} fontWeight="bold">
                 Hey, I'm Andy!
               </Text>
-              <Text color="#0f1b61" fontSize="1.5rem">
+              <Text color="#0f1b61" fontSize={{ sm: '1.3rem', md: '1.5rem' }}>
                 Welcome to my world!
               </Text>
-              <Text minH="2.4rem" color="#0f1b61" fontSize="1.2rem">
+              <Text
+                minH="2.4rem"
+                color="#0f1b61"
+                fontSize={{ sm: '1.1rem', md: '1.2rem' }}
+              >
                 Others see me as a{' '}
                 <Text
                   display="inline"
@@ -82,7 +91,12 @@ export default function Homepage({ setBkgColor }) {
                 </Text>
                 |
               </Text>
-              <Box textAlign="right" mt="3rem" w="clamp(15px, 25vw, 130px)">
+              <Box
+                color="gray.400"
+                textAlign="right"
+                mt="3rem"
+                w="clamp(15px, 25vw, 130px)"
+              >
                 <motion.div
                   animate={{
                     y: [-10, 0, -10],
@@ -111,7 +125,7 @@ export default function Homepage({ setBkgColor }) {
                 w="clamp(10px, 20vw, 100px)"
                 h="clamp(100px, 50vh, 600px)"
                 borderStyle="solid"
-                borderColor="gray.600"
+                borderColor="gray.300"
                 borderRightWidth="1px"
               ></Box>
             </VStack>
@@ -125,6 +139,7 @@ export default function Homepage({ setBkgColor }) {
               transition={{ duration: 0.6, delay: 0.5 }}
             >
               <Image
+                boxShadow="xl"
                 position="sticky"
                 top="15rem"
                 maxW="clamp(300px,30vw,400px)"
