@@ -1,6 +1,5 @@
 {
   "name": "portfolio",
-  "homepage": "http://andyh031.github.io/profile",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
