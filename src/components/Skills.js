@@ -36,9 +36,10 @@ export default function Skills() {
       <Heading marginBottom="1rem">Technical Skills</Heading>
       <SimpleGrid
         margin="auto"
-        maxWidth="300px"
+        maxWidth="250px"
+        minWidth="150px"
         minChildWidth="30px"
-        spacing="100px"
+        spacing="3rem"
       >
         {skills.map((skill) => {
           return (

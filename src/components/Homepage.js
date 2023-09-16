@@ -58,27 +58,37 @@ export default function Homepage({ setBkgColor }) {
       <Box
         margin="auto"
         marginBottom="2rem"
-        width="clamp(500px, 70vw, 1000px)"
+        width="clamp(300px, 70vw, 1000px)"
         marginTop="6rem"
       >
         <Box minH="90vh" marginInline="3rem">
           <Flex
             gap="3rem"
             justifyContent="space-between"
-            flexDirection={{ sm: 'column-reverse', md: 'row' }}
-            alignItems={{ sm: 'center', md: 'stretch' }}
+            flexDirection={{
+              base: 'column-reverse',
+              sm: 'column-reverse',
+              md: 'row',
+            }}
+            alignItems={{ base: 'center', sm: 'center', md: 'stretch' }}
           >
             <VStack gap="1.5rem" alignItems="flex-start">
-              <Text fontSize={{ sm: '3rem', md: '4rem' }} fontWeight="bold">
+              <Text
+                fontSize={{ base: '3rem', sm: '3rem', md: '4rem' }}
+                fontWeight="bold"
+              >
                 Hey, I'm Andy!
               </Text>
-              <Text color="#0f1b61" fontSize={{ sm: '1.3rem', md: '1.5rem' }}>
+              <Text
+                color="#0f1b61"
+                fontSize={{ base: '1.3rem', sm: '1.3rem', md: '1.5rem' }}
+              >
                 Welcome to my world!
               </Text>
               <Text
                 minH="2.4rem"
                 color="#0f1b61"
-                fontSize={{ sm: '1.1rem', md: '1.2rem' }}
+                fontSize={{ base: '1.1rem', sm: '1.1rem', md: '1.2rem' }}
               >
                 Others see me as a{' '}
                 <Text
@@ -142,8 +152,14 @@ export default function Homepage({ setBkgColor }) {
                 boxShadow="xl"
                 position="sticky"
                 top="15rem"
-                maxW="clamp(300px,30vw,400px)"
-                h="clamp(300px, 30vw, 400px)"
+                maxW={{
+                  base: 'clamp(200px, 90vw, 300px)',
+                  sm: 'clamp(300px,30vw,400px)',
+                }}
+                h={{
+                  base: 'clamp(200px, 90vw, 300px)',
+                  sm: 'clamp(300px, 30vw, 400px)',
+                }}
                 borderRadius="50%"
                 objectFit="cover"
                 src={pfp}

@@ -14,7 +14,7 @@ function App() {
   const [showDocText, setShowDocText] = useState(true);
   const breakpoints = {
     base: '0px',
-    sm: '320px',
+    sm: '400px',
     md: '875px',
     lg: '960px',
     xl: '1200px',
@@ -39,18 +39,18 @@ function App() {
         left="50%"
         transform="translate(-50%, -50%)"
         zIndex="-1"
-        w={{ base: '100vw', md: '80vw', xl: '1200px' }}
+        w={{ base: '100%', sm: '80vw', xl: '1200px' }}
         bgColor={bkgColor}
       />
       <Box
         pointerEvents="none"
         w="100%"
         h="100%"
-        borderStyle="solid"
+        borderStyle={{ base: 'none', sm: 'solid' }}
         borderColor="white"
         position="fixed"
         zIndex="1000"
-        borderWidth="1.5rem"
+        borderWidth={{ base: '0', sm: '1.5rem' }}
       ></Box>
       <Header setShowDocText={setShowDocText} />
       {showDocText && (

@@ -63,7 +63,7 @@ export default function Projects({ setBkgColor }) {
       <Box
         margin="auto"
         marginBottom="2rem"
-        width="clamp(500px, 70vw, 1000px)"
+        width="clamp(300px, 70vw, 1000px)"
         marginTop="6rem"
       >
         <Box minH="70vh" marginInline="3rem">
@@ -131,8 +131,14 @@ export default function Projects({ setBkgColor }) {
                 boxShadow="xl"
                 position="sticky"
                 top="15rem"
-                maxW="clamp(300px,30vw,400px)"
-                h="clamp(300px, 30vw, 400px)"
+                maxW={{
+                  base: '200px',
+                  sm: 'clamp(300px,30vw,400px)',
+                }}
+                h={{
+                  base: '200px',
+                  sm: 'clamp(300px, 30vw, 400px)',
+                }}
                 borderRadius="50%"
                 objectFit="cover"
                 src={butterflies}
