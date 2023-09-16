@@ -70,14 +70,24 @@ export default function Projects({ setBkgColor }) {
           <Flex
             gap="3rem"
             justifyContent="space-between"
-            flexDirection={{ sm: 'column-reverse', md: 'row' }}
-            alignItems={{ sm: 'center', md: 'stretch' }}
+            flexDirection={{
+              base: 'column-reverse',
+              sm: 'column-reverse',
+              md: 'row',
+            }}
+            alignItems={{ base: 'center', sm: 'center', md: 'stretch' }}
           >
             <VStack gap="1.5rem" alignItems="flex-start">
-              <Text fontSize={{ sm: '3rem', md: '4rem' }} fontWeight="bold">
+              <Text
+                fontSize={{ base: '3rem', sm: '3rem', md: '4rem' }}
+                fontWeight="bold"
+              >
                 Projects
               </Text>
-              <Text color="#0f1b61" fontSize={{ sm: '1.3rem', md: '1.5rem' }}>
+              <Text
+                color="#0f1b61"
+                fontSize={{ base: '1.3rem', sm: '1.3rem', md: '1.5rem' }}
+              >
                 An expression of creativity and innovation.
               </Text>
               <Box
@@ -132,11 +142,11 @@ export default function Projects({ setBkgColor }) {
                 position="sticky"
                 top="15rem"
                 maxW={{
-                  base: '200px',
+                  base: 'clamp(200px, 70vw, 350px)',
                   sm: 'clamp(300px,30vw,400px)',
                 }}
                 h={{
-                  base: '200px',
+                  base: 'clamp(200px, 70vw, 350px)',
                   sm: 'clamp(300px, 30vw, 400px)',
                 }}
                 borderRadius="50%"
@@ -181,10 +191,12 @@ function Project({ title, image, description, link, technologies }) {
   }, [isInView]);
   return (
     <Box
+      fontSize={{ base: '0.8rem', sm: '1rem' }}
       ref={ref}
       as={motion.div}
       animate={boxControls}
-      p="5rem"
+      paddingBlock="5rem"
+      marginInline="1rem"
       borderTop="solid 1px"
       borderTopColor="gray.300"
     >
@@ -192,8 +204,8 @@ function Project({ title, image, description, link, technologies }) {
         gap="5rem"
         flexDirection={{
           base: 'column-reverse',
-          md: 'column-reverse',
-          lg: 'row',
+          sm: 'column-reverse',
+          md: 'row',
         }}
         alignItems="center"
       >

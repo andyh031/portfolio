@@ -153,11 +153,11 @@ export default function Homepage({ setBkgColor }) {
                 position="sticky"
                 top="15rem"
                 maxW={{
-                  base: 'clamp(200px, 90vw, 300px)',
+                  base: 'clamp(200px, 70vw, 350px)',
                   sm: 'clamp(300px,30vw,400px)',
                 }}
                 h={{
-                  base: 'clamp(200px, 90vw, 300px)',
+                  base: 'clamp(200px, 70vw, 350px)',
                   sm: 'clamp(300px, 30vw, 400px)',
                 }}
                 borderRadius="50%"

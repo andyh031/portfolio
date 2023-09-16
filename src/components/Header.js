@@ -27,17 +27,13 @@ export default function Header({ setShowDocText }) {
       position="sticky"
       top="1rem"
       margin="auto"
-      w={{ base: '90vw', md: '70vw', xl: '1200px' }}
-      paddingInline="4rem"
+      width="clamp(300px, 70vw, 1000px)"
+      paddingInline={{ base: '0.5rem', sm: '3rem' }}
       paddingTop="3rem"
     >
       <Flex justifyContent="space-between">
         <Menu>
           <Button
-            _hover={{
-              letterSpacing: '0.3rem',
-              bgColor: 'gray.400',
-            }}
             letterSpacing="0.1em"
             fontSize="xl"
             fontWeight="semibold"
@@ -85,7 +81,7 @@ function ExpandedHeader() {
       <HStack>
         <Box
           as={motion.div}
-          w="75px"
+          w={{ base: '0', sm: '75px' }}
           variants={{
             hidden: { opacity: 0, x: 200 },
             visible: { opacity: 1, x: 0 },
@@ -125,7 +121,7 @@ function ExpandedHeader() {
           </motion.li>
         </motion.ul>
       </HStack>
-      <Link href="/" fontSize="3em">
+      <Link href="/" fontSize={{ base: '1.2rem', sm: '2.1rem', md: '3rem' }}>
         <motion.div
           className="link"
           variants={{
@@ -139,7 +135,10 @@ function ExpandedHeader() {
           Home
         </motion.div>
       </Link>
-      <Link href="/projects" fontSize="3em">
+      <Link
+        href="/projects"
+        fontSize={{ base: '1.2rem', sm: '2.1rem', md: '3rem' }}
+      >
         <motion.div
           className="link"
           variants={{
@@ -153,7 +152,10 @@ function ExpandedHeader() {
           Projects
         </motion.div>
       </Link>
-      <Link href="/experience" fontSize="3em">
+      <Link
+        href="/experience"
+        fontSize={{ base: '1.2rem', sm: '2.1rem', md: '3rem' }}
+      >
         <motion.div
           className="link"
           variants={{
