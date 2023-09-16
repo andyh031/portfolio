@@ -1,104 +1,47 @@
-body {
-  margin: 30px;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 17px;
-  line-height: 32px;
-  background-color:rgba(248, 249, 250);
-  color: rgb(33, 37, 41);
-  position: relative;
-  left: 0;
-  right: 0;
-  margin-right: auto;
-  margin-left: auto;
-  width: 70%;
+ul {
+  list-style-type: none;
+
 }
 
-h1 {
-  font-weight: 700;
-}
-
-h2 {
-  font-weight: 500;
-}
-
-.pfp {
-  max-width: 300px;
-  min-width: 300px;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 20px 10px;
-}
-
-p {
-  padding-bottom: 5px
-}
-
-.about-link {
-  font-size: 14px;
-  color: black;
-  margin: 10px;
-  padding: 7px;
-  display: inline-block;
-  background-color: #f8f9fa;
-  margin: 5px;
-  border-radius: 10px;
-  text-decoration: none;
-  border-style: solid;
-  border-width: 1px;
-  border-color: rgb(33, 37, 41);
-}
-
-.about-link:hover {
-  cursor: pointer;
-  background-color: #e2e2e2ab;
-}
-
-.tiny-logo {
-  height:20px;
-  width: 20px;
-  padding: 2px 4px;
-  margin-bottom: -7px;
-  border-radius: 5px;
-}
-
-.row {
-  display: flex;
+li {
+  padding: 0.5rem;
 }
 
 .left {
-  flex: 80%
+  float: left;
 }
 
-.right {
-  flex: 20%
+.margin {
+  margin-block: 1.5rem;
 }
 
-@media (max-width: 1000px) {
-  body {
-    width: 90%
-  }
-  .about-section {
-    display: flex;
-    flex-direction: column;
-  }
+.no-pointers {
+  pointer-events: none;
+}
 
-  .row {
-    flex-direction: column-reverse;
-  }
+.link {
+  text-decoration: none;
+  padding: 1vw 5vw;
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  position: relative;
+}
 
-  .pfp {
-    margin: auto;
-    min-width: 300px;
-    min-height: 300px;
-  }
+.link:before {
+  content: "";
+  background: linear-gradient(to right,
+      transparent,
+      #edecf1,
+      #ded8ee);
+  opacity: 0.5;
+  border-radius: 1rem;
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
 
-  .about-link {
-    text-align: center;
-  }
-
-  h1 {
-    text-align: center;
-  }
+.link:hover:before {
+  width: 100%;
+  transition: width 600ms ease;
 }
