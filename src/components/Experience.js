@@ -15,8 +15,9 @@ import {
 } from '@chakra-ui/react';
 import Scroller from './Scroller';
 import { motion, useAnimation, useInView } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import gradImage from '../images/grad.jpeg';
+import Loading from './Loading';
 
 export default function Experience({ setBkgColor }) {
   setBkgColor('#f6fcf4');
@@ -40,83 +41,100 @@ export default function Experience({ setBkgColor }) {
 
   const experiences = [cgi, waiter];
 
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  const handleImageLoaded = () => {
+    setIsImageLoaded(true);
+  };
+
+  useEffect(() => {
+    const delay = setTimeout(() => {
+      setIsImageLoaded(true);
+    }, 1500);
+    return () => clearTimeout(delay);
+  }, []);
+
   return (
     <>
-      <Box
-        margin="auto"
-        marginBottom="2rem"
-        width="clamp(300px, 70vw, 1000px)"
-        marginTop="6rem"
-      >
-        <Box minH="70vh" marginInline={{ md: 'minmax(1rem, 3rem)' }}>
-          <Flex
-            gap="3rem"
-            justifyContent="space-between"
-            flexDirection={{
-              base: 'column-reverse',
-              sm: 'column-reverse',
-              md: 'row',
-            }}
-            alignItems={{ base: 'center', sm: 'center', md: 'stretch' }}
-          >
-            <VStack gap="1.5rem" alignItems="flex-start">
-              <Text
-                fontSize={{ base: '2.5rem', sm: '3.5rem', md: '3.5rem' }}
-                fontWeight="bold"
-              >
-                Experience
-              </Text>
-              <Text
-                color="#0f1b61"
-                fontSize={{ base: '1.1rem', sm: '1.5rem', md: '1.5rem' }}
-              >
-                A place of new beginnings.
-              </Text>
-              <Scroller />
-            </VStack>
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, x: 50, y: 50 },
-                show: { opacity: 1, x: 0, y: 0 },
-              }}
-              initial="hidden"
-              animate="show"
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              <Image
-                boxShadow="xl"
-                position="sticky"
-                top="15rem"
-                maxW={{
-                  base: 'clamp(200px, 70vw, 350px)',
-                  sm: 'clamp(300px,30vw,400px)',
-                }}
-                h={{
-                  base: 'clamp(200px, 70vw, 350px)',
-                  sm: 'clamp(300px,30vw,400px)',
-                }}
-                borderRadius="50%"
-                objectFit="cover"
-                src={gradImage}
-              />
-            </motion.div>
-          </Flex>
-        </Box>
-
-        <Stepper
-          marginInline="3rem"
-          marginTop="100px"
-          height="fit-content"
-          gap="0"
-          size="lg"
-          index="1"
-          orientation="vertical"
+      {!isImageLoaded ? (
+        <Loading />
+      ) : (
+        <Box
+          margin="auto"
+          marginBottom="2rem"
+          width="clamp(300px, 70vw, 1000px)"
+          marginTop="6rem"
         >
-          {experiences.map((experience) => (
-            <Moment {...experience} />
-          ))}
-        </Stepper>
-      </Box>
+          <Box minH="70vh" marginInline={{ md: 'minmax(1rem, 3rem)' }}>
+            <Flex
+              gap="3rem"
+              justifyContent="space-between"
+              flexDirection={{
+                base: 'column-reverse',
+                sm: 'column-reverse',
+                md: 'row',
+              }}
+              alignItems={{ base: 'center', sm: 'center', md: 'stretch' }}
+            >
+              <VStack gap="1.5rem" alignItems="flex-start">
+                <Text
+                  fontSize={{ base: '2.5rem', sm: '3.5rem', md: '3.5rem' }}
+                  fontWeight="bold"
+                >
+                  Experience
+                </Text>
+                <Text
+                  color="#0f1b61"
+                  fontSize={{ base: '1.1rem', sm: '1.5rem', md: '1.5rem' }}
+                >
+                  A place of new beginnings.
+                </Text>
+                <Scroller />
+              </VStack>
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, x: 50, y: 50 },
+                  show: { opacity: 1, x: 0, y: 0 },
+                }}
+                initial="hidden"
+                animate="show"
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                <Image
+                  boxShadow="xl"
+                  position="sticky"
+                  top="15rem"
+                  maxW={{
+                    base: 'clamp(200px, 70vw, 350px)',
+                    sm: 'clamp(300px,30vw,400px)',
+                  }}
+                  h={{
+                    base: 'clamp(200px, 70vw, 350px)',
+                    sm: 'clamp(300px,30vw,400px)',
+                  }}
+                  borderRadius="50%"
+                  objectFit="cover"
+                  src={gradImage}
+                />
+              </motion.div>
+            </Flex>
+          </Box>
+
+          <Stepper
+            marginInline="3rem"
+            marginTop="100px"
+            height="fit-content"
+            gap="0"
+            size="lg"
+            index="1"
+            orientation="vertical"
+          >
+            {experiences.map((experience) => (
+              <Moment {...experience} />
+            ))}
+          </Stepper>
+        </Box>
+      )}
     </>
   );
 }

@@ -17,7 +17,8 @@ import butterflies from '../images/butterflies.jpeg';
 import fooderImage from '../images/fooderImage.png';
 import pinmasterImage from '../images/pinmasterImage.PNG';
 import { motion, useAnimation, useInView } from 'framer-motion';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
+import Loading from './Loading';
 
 export default function Projects({ setBkgColor }) {
   setBkgColor('#fff7f7');
@@ -79,74 +80,92 @@ export default function Projects({ setBkgColor }) {
 
   const projects = [pinmaster, fooder, subletter, sorter, heart, gradeAir];
 
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  const handleImageLoaded = () => {
+    setIsImageLoaded(true);
+  };
+
+  useEffect(() => {
+    const delay = setTimeout(() => {
+      setIsImageLoaded(true);
+    }, 1500);
+    return () => clearTimeout(delay);
+  }, []);
+
   return (
     <>
-      <Box
-        margin="auto"
-        marginBottom="2rem"
-        width="clamp(300px, 70vw, 1000px)"
-        marginTop="6rem"
-      >
-        <Box minH="70vh" marginInline="3rem">
-          <Flex
-            gap="3rem"
-            justifyContent="space-between"
-            flexDirection={{
-              base: 'column-reverse',
-              sm: 'column-reverse',
-              md: 'row',
-            }}
-            alignItems={{ base: 'center', sm: 'center', md: 'stretch' }}
-          >
-            <VStack gap="1.5rem" alignItems="flex-start">
-              <Text
-                fontSize={{ base: '3rem', sm: '3rem', md: '4rem' }}
-                fontWeight="bold"
-              >
-                Projects
-              </Text>
-              <Text
-                color="#0f1b61"
-                fontSize={{ base: '1.3rem', sm: '1.3rem', md: '1.5rem' }}
-              >
-                An expression of creativity and innovation.
-              </Text>
-              <Scroller />
-            </VStack>
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, x: 50, y: 50 },
-                show: { opacity: 1, x: 0, y: 0 },
+      {!isImageLoaded ? (
+        <Loading />
+      ) : (
+        <Box
+          margin="auto"
+          marginBottom="2rem"
+          width="clamp(300px, 70vw, 1000px)"
+          marginTop="6rem"
+        >
+          <Box minH="70vh" marginInline="3rem">
+            <Flex
+              gap="3rem"
+              justifyContent="space-between"
+              flexDirection={{
+                base: 'column-reverse',
+                sm: 'column-reverse',
+                md: 'row',
               }}
-              initial="hidden"
-              animate="show"
-              transition={{ duration: 0.6, delay: 0.5 }}
+              alignItems={{ base: 'center', sm: 'center', md: 'stretch' }}
             >
-              <Image
-                boxShadow="xl"
-                position="sticky"
-                top="15rem"
-                maxW={{
-                  base: 'clamp(200px, 70vw, 350px)',
-                  sm: 'clamp(300px,30vw,400px)',
+              <VStack gap="1.5rem" alignItems="flex-start">
+                <Text
+                  fontSize={{ base: '3rem', sm: '3rem', md: '4rem' }}
+                  fontWeight="bold"
+                >
+                  Projects
+                </Text>
+                <Text
+                  color="#0f1b61"
+                  fontSize={{ base: '1.3rem', sm: '1.3rem', md: '1.5rem' }}
+                >
+                  An expression of creativity and innovation.
+                </Text>
+                <Scroller />
+              </VStack>
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, x: 50, y: 50 },
+                  show: { opacity: 1, x: 0, y: 0 },
                 }}
-                h={{
-                  base: 'clamp(200px, 70vw, 350px)',
-                  sm: 'clamp(300px, 30vw, 400px)',
-                }}
-                borderRadius="50%"
-                objectFit="cover"
-                src={butterflies}
-              />
-            </motion.div>
-          </Flex>
+                initial="hidden"
+                animate="show"
+                transition={{ duration: 0.6, delay: 0.5 }}
+              >
+                <Image
+                  boxShadow="xl"
+                  position="sticky"
+                  top="15rem"
+                  maxW={{
+                    base: 'clamp(200px, 70vw, 350px)',
+                    sm: 'clamp(300px,30vw,400px)',
+                  }}
+                  h={{
+                    base: 'clamp(200px, 70vw, 350px)',
+                    sm: 'clamp(300px, 30vw, 400px)',
+                  }}
+                  borderRadius="50%"
+                  objectFit="cover"
+                  src={butterflies}
+                  onLoad={handleImageLoaded}
+                />
+              </motion.div>
+            </Flex>
+          </Box>
+          <Box marginTop="100px">
+            {projects.map((project) => (
+              <Project {...project} />
+            ))}
+          </Box>
         </Box>
-        <Box marginTop="100px">
-          {projects.map((project) => (
-            <Project {...project} />
-          ))}
-        </Box>
-      </Box>
+      )}
     </>
   );
 }
