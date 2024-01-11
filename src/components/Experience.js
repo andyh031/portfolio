@@ -20,6 +20,15 @@ import gradImage from '../images/grad.jpeg';
 
 export default function Experience({ setBkgColor }) {
   setBkgColor('#f6fcf4');
+
+  const cgi = {
+    title: 'Full-Stack Developer',
+    company: 'CGI',
+    location: 'Vancouver, British Columbia',
+    date: 'January 2024 - Present',
+    description: '',
+  };
+
   const waiter = {
     title: 'Waiter/Server',
     company: "Brother's Taste of Asia",
@@ -29,11 +38,7 @@ export default function Experience({ setBkgColor }) {
       'As a waiter, I delivered excellent customer service in a fast-paced environment, whether it be seating customers and answering menu questions, or taking calls and packing neat takeout dishes. As a more experienced employee, I successfully trained new employees on restaurant protocols, menu offerings, and service standards, resulting in quick integration with the waitstaff team.',
   };
 
-  const next = {
-    title: 'Be Next!',
-  };
-
-  const experiences = [waiter, next];
+  const experiences = [cgi, waiter];
 
   return (
     <>
@@ -176,17 +181,20 @@ function Moment({ title, company, location, date, description }) {
   }, [isInView]);
 
   return (
-    <Step mt="1rem" ref={ref} as={motion.div} animate={animation}>
-      <StepIndicator></StepIndicator>
-      <Box>
-        <StepTitle>{title}</StepTitle>
-        <StepDescription>{company}</StepDescription>
-        <StepDescription>{location}</StepDescription>
-        <StepDescription>{date}</StepDescription>
-        <StepDescription mt="1rem">{description}</StepDescription>
-      </Box>
+    <>
+      <Step mt="1rem" ref={ref} as={motion.div} animate={animation}>
+        <StepIndicator></StepIndicator>
+        <Box>
+          <StepTitle>{title}</StepTitle>
+          <StepDescription>{company}</StepDescription>
+          <StepDescription>{location}</StepDescription>
+          <StepDescription>{date}</StepDescription>
+          <StepDescription mt="1rem">{description}</StepDescription>
+        </Box>
 
+        <StepSeparator />
+      </Step>
       <StepSeparator />
-    </Step>
+    </>
   );
 }

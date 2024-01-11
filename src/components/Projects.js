@@ -14,11 +14,32 @@ import sorterImage from '../images/sorter.PNG';
 import gradeairImage from '../images/gradeair.PNG';
 import heartImage from '../images/heartImage.PNG';
 import butterflies from '../images/butterflies.jpeg';
+import fooderImage from '../images/fooderImage.png';
+import pinmasterImage from '../images/pinmasterImage.PNG';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { useRef, useEffect } from 'react';
 
 export default function Projects({ setBkgColor }) {
   setBkgColor('#fff7f7');
+
+  const pinmaster = {
+    title: 'PinMaster3 - HackCamp 2023',
+    image: pinmasterImage,
+    description:
+      'PinMaster3 is a chrome extension which lets you select text to open in a popup window to help with scrolling up-and-down to find information. It also lets you popup answer fields that you can type in that sync with the actual webpage, letting you answer multiple choice, written questions, and multi-select questions without the need for excessive scrolling.',
+    link: 'https://devpost.com/software/pinmaster3',
+    technologies: 'HTML, CSS, JavaScript',
+  };
+
+  const fooder = {
+    title: 'Fooder - Hack the Change 2023',
+    image: fooderImage,
+    description:
+      'Fooder is a web app that allows users to upload a photo of an item, and classify what type of disposal category it belongs to through machine-learing image classification. It also utilizes the Google Maps API to find nearby disposal areas for the requested item.',
+    link: 'https://devpost.com/software/fooder-hsc4fp',
+    technologies: 'React Javascript, Flask, Chakra UI CSS',
+  };
+
   const subletter = {
     title: 'Subletter',
     image: subletterImage,
@@ -56,7 +77,7 @@ export default function Projects({ setBkgColor }) {
     technologies: 'Java, JUnit, Java Swing',
   };
 
-  const projects = [subletter, sorter, heart, gradeAir];
+  const projects = [pinmaster, fooder, subletter, sorter, heart, gradeAir];
 
   return (
     <>
