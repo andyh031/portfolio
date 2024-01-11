@@ -115,6 +115,7 @@ export default function Experience({ setBkgColor }) {
                   borderRadius="50%"
                   objectFit="cover"
                   src={gradImage}
+                  loading="lazy"
                   onLoad={handleImageLoaded}
                 />
               </motion.div>

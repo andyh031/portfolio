@@ -144,6 +144,7 @@ export default function Homepage({ setBkgColor }) {
                   borderRadius="50%"
                   objectFit="cover"
                   src={pfp}
+                  loading="lazy"
                   onLoad={handleImageLoaded}
                 />
               </motion.div>

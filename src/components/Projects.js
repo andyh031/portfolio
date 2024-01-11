@@ -154,6 +154,7 @@ export default function Projects({ setBkgColor }) {
                   borderRadius="50%"
                   objectFit="cover"
                   src={butterflies}
+                  loading="lazy"
                   onLoad={handleImageLoaded}
                 />
               </motion.div>
@@ -220,6 +221,7 @@ function Project({ title, image, description, link, technologies }) {
           borderRadius="50%"
           objectFit="cover"
           src={image}
+          loading="lazy"
         />
         <VStack alignItems="flex-start">
           <Heading>
