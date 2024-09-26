@@ -12,7 +12,7 @@ export const WEBSITE_PATHS = Object.freeze({
 
 export const SECTION_BG_COLOUR = Object.freeze({
   HOME: "#f4f9fc",
-  PROEJCTS: "#fff7f7",
+  PROJECTS: "#fff7f7",
   EXPERIENCE: "#f6fcf4",
 });
 
