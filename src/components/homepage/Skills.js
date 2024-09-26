@@ -5,21 +5,21 @@ import {
   CircularProgress,
   Text,
   Box,
-} from '@chakra-ui/react';
-import { useRef, useEffect } from 'react';
-import { motion, useInView, useAnimation } from 'framer-motion';
+} from "@chakra-ui/react";
+import { useRef, useEffect } from "react";
+import { motion, useInView, useAnimation } from "framer-motion";
 
 export default function Skills() {
   const skills = [
-    ['JavaScript', '100'],
-    ['Python', '100'],
-    ['Java', '100'],
-    ['SQL', '100'],
-    ['HTML', '100'],
-    ['CSS', '100'],
-    ['R', '100'],
-    ['C/C++', '90'],
-    ['TypeScript', '60'],
+    ["JavaScript", "100"],
+    ["Python", "100"],
+    ["Java", "100"],
+    ["SQL", "100"],
+    ["HTML", "100"],
+    ["CSS", "100"],
+    ["R", "100"],
+    ["C/C++", "90"],
+    ["TypeScript", "60"],
   ];
 
   const ref = useRef(null);
@@ -27,9 +27,9 @@ export default function Skills() {
   const animation = useAnimation();
   useEffect(() => {
     if (isInView) {
-      animation.start('visible');
+      animation.start("visible");
     }
-  }, [isInView]);
+  }, [isInView, animation]);
 
   return (
     <Box marginInline="3rem">
@@ -47,19 +47,16 @@ export default function Skills() {
               <VStack
                 as={motion.div}
                 variants={{
-                  hidden: {
-                    y: 50,
-                    rotateX: 180,
-                  },
-                  visible: { y: 0, rotateX: 0 },
+                  hidden: { y: 50, opacity: 0 },
+                  visible: { y: 0, opacity: 1 },
                 }}
                 initial="hidden"
                 animate={animation}
                 transition="500ms"
                 ref={ref}
               >
-                <Text>{skill[0]}</Text>
                 <CircularProgress value={skill[1]} />
+                <Text>{skill[0]}</Text>
               </VStack>
             </>
           );
