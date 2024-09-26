@@ -9,12 +9,13 @@ import {
 } from "@chakra-ui/react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
+import { SECTION_BG_COLOUR } from "../util/constants";
 import gradImage from "../images/grad.jpeg";
 import PageStart from "../components/page/PageStart";
 import PageLoader from "../components/page/PageLoader";
 
 export default function Experience({ setBkgColor }) {
-  setBkgColor("#f6fcf4");
+  setBkgColor(SECTION_BG_COLOUR.EXPERIENCE);
 
   const ta = {
     title: "Undergraduate Teaching Assistant",
@@ -107,7 +108,9 @@ function Moment({ title, company, location, date, description }) {
       <Step mt="1rem" ref={ref} as={motion.div} animate={animation}>
         <StepIndicator></StepIndicator>
         <Box>
-          <StepTitle>{title}</StepTitle>
+          <StepTitle>
+            <strong>{title}</strong>
+          </StepTitle>
           <StepDescription>{company}</StepDescription>
           <StepDescription>{location}</StepDescription>
           <StepDescription>{date}</StepDescription>

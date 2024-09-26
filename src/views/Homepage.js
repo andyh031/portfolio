@@ -3,9 +3,10 @@ import pfp from "../images/pfp.png";
 import About from "../components/homepage/About";
 import PageStart from "../components/page/PageStart";
 import PageLoader from "../components/page/PageLoader";
+import { SECTION_BG_COLOUR } from "../util/constants";
 
 export default function Homepage({ setBkgColor }) {
-  setBkgColor("#f4f9fc");
+  setBkgColor(SECTION_BG_COLOUR.HOME);
 
   return (
     <PageLoader

@@ -19,11 +19,11 @@ import pantryPlannerImage from "../images/pantryPlanner.png";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { useRef, useEffect } from "react";
 import PageStart from "../components/page/PageStart";
-import { PROJECT_LINKS } from "../util/constants";
+import { PROJECT_LINKS, SECTION_BG_COLOUR } from "../util/constants";
 import PageLoader from "../components/page/PageLoader";
 
 export default function Projects({ setBkgColor }) {
-  setBkgColor("#fff7f7");
+  setBkgColor(SECTION_BG_COLOUR.PROJECTS);
 
   const pantryPlanner = {
     title: "Panty Planner - nwHacks 2024 Sponsorship Prize Winner",
@@ -136,14 +136,12 @@ export default function Projects({ setBkgColor }) {
 
 function Project({ title, image, description, link, technologies }) {
   const ref = useRef(null);
-  const boxControls = useAnimation();
-  const isInView = useInView(ref, { once: true, threshold: 0.4 });
-
+  const isInView = useInView(ref, { once: true, threshold: 0.2 });
+  const animation = useAnimation();
   useEffect(() => {
     if (isInView) {
-      boxControls.start({
+      animation.start({
         y: 0,
-        opacity: 1,
         transition: {
           type: "spring",
           bounce: 0.5,
@@ -151,18 +149,17 @@ function Project({ title, image, description, link, technologies }) {
         },
       });
     } else {
-      boxControls.start({
+      animation.start({
         y: 30,
-        opacity: 0,
       });
     }
-  }, [isInView, boxControls]);
+  }, [isInView, animation]);
   return (
     <Box
       fontSize={{ base: "0.8rem", sm: "1rem" }}
       ref={ref}
       as={motion.div}
-      animate={boxControls}
+      animate={animation}
       paddingBlock="5rem"
       marginInline="1rem"
       borderTop="solid 1px"

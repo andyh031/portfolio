@@ -8,7 +8,18 @@ export default function About() {
   const animation = useAnimation();
   useEffect(() => {
     if (isInView) {
-      animation.start("visible");
+      animation.start({
+        y: 0,
+        transition: {
+          type: "spring",
+          bounce: 0.5,
+          duration: 1,
+        },
+      });
+    } else {
+      animation.start({
+        y: 30,
+      });
     }
   }, [isInView, animation]);
   return (
@@ -16,13 +27,7 @@ export default function About() {
       marginInline="3rem"
       ref={ref}
       as={motion.div}
-      variants={{
-        hidden: { y: 50, opacity: 0 },
-        visible: { y: 0, opacity: 1 },
-      }}
-      initial="hidden"
       animate={animation}
-      transition="400ms ease"
       height="clamp(fit-content, 70vh, 1000px)"
       marginBlock="50px"
       lineHeight="2rem"

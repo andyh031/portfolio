@@ -10,6 +10,12 @@ export const WEBSITE_PATHS = Object.freeze({
   EXPERIENCE: "/experience",
 });
 
+export const SECTION_BG_COLOUR = Object.freeze({
+  HOME: "#f4f9fc",
+  PROEJCTS: "#fff7f7",
+  EXPERIENCE: "#f6fcf4",
+});
+
 export const PROJECT_LINKS = Object.freeze({
   PANTRYPLANNER: "https://devpost.com/software/pantry-planner-l81gm3",
   PINMASTER: "https://devpost.com/software/pinmaster3",
