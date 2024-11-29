@@ -26,7 +26,7 @@ export default function Projects({ setBkgColor }) {
   setBkgColor(SECTION_BG_COLOUR.PROJECTS);
 
   const pantryPlanner = {
-    title: "Panty Planner - nwHacks 2024 Sponsorship Prize Winner",
+    title: "Pantry Planner - nwHacks 2024 Sponsorship Prize Winner",
     image: pantryPlannerImage,
     description:
       "Not only is Pantry Planner just an inventory management system for you, but it is a user-friendly interface that helps you connect with your community to share your culinary creations and explore a diverse range of recipes shared by other users. By joining our community, it aids in maintaining a healthy lifestyle with its built-in calorie tracker and elevates your cooking experiences!",
